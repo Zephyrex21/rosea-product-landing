@@ -1,3 +1,5 @@
+import ScrollReveal from "./ScrollReveal";
+
 export default function StoreLocator() {
   return (
     <section
@@ -6,14 +8,14 @@ export default function StoreLocator() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-surface rounded-3xl p-8 md:p-12 lg:p-16 border border-rose-primary/10 shadow-xl flex flex-col lg:flex-row items-center gap-12">
-          <div className="w-full lg:w-1/2 space-y-6">
+          <ScrollReveal direction="left" duration={0.8} className="w-full lg:w-1/2 space-y-6">
             <h2 className="text-3xl md:text-4xl font-display font-bold text-rose-ink">
               Find Roséa Near You
             </h2>
             <p className="text-lg text-muted leading-relaxed">
-              Available at select premium supermarkets, boutique cafés, and
-              specialty stores. You can also order online through our
-              delivery partners.
+              Available at select supermarkets, boutique cafés, and specialty
+              stores. You can also order online through our delivery
+              partners.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button className="flex-1 bg-rose-ink text-ivory px-6 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
@@ -25,8 +27,13 @@ export default function StoreLocator() {
                 <span>Order Online</span>
               </button>
             </div>
-          </div>
-          <div className="w-full lg:w-1/2 h-64 md:h-80 bg-blush-lighter rounded-2xl relative overflow-hidden flex items-center justify-center group cursor-pointer border border-blush">
+          </ScrollReveal>
+          <ScrollReveal
+            direction="right"
+            duration={0.8}
+            delay={0.1}
+            className="w-full lg:w-1/2 h-64 md:h-80 bg-blush-lighter rounded-2xl relative overflow-hidden flex items-center justify-center group cursor-pointer border border-blush"
+          >
             <div
               className="absolute inset-0 opacity-20"
               style={{
@@ -42,7 +49,7 @@ export default function StoreLocator() {
                 Search your pin code
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

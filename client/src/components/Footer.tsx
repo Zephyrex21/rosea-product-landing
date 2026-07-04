@@ -1,8 +1,10 @@
+import ScrollReveal from "./ScrollReveal";
+
 export default function Footer() {
   return (
     <footer className="relative z-10 bg-surface border-t border-rose-primary/10 pt-16 pb-8 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-12">
+        <ScrollReveal className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-12" duration={0.7}>
           <div className="col-span-1 md:col-span-1 space-y-4">
             <div className="flex items-center gap-2">
               <span className="font-display italic font-bold text-2xl tracking-tight text-rose-deep">
@@ -10,8 +12,8 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm text-muted leading-relaxed">
-              An interactive luxury film in a bottle. Real rose, real milk,
-              savored one chilled sip at a time.
+              A rose and milk drink, made for the quiet moments. Real rose,
+              real milk, nothing else.
             </p>
             <div className="flex space-x-4 pt-2">
               <a
@@ -106,7 +108,7 @@ export default function Footer() {
               </button>
             </form>
           </div>
-        </div>
+        </ScrollReveal>
         <div className="border-t border-rose-primary/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted">
             © {new Date().getFullYear()} Roséa. All rights reserved.

@@ -21,11 +21,21 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+            <svg
+              className="w-5 h-5 text-rose-primary"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 3c2 0 5 1.5 5 5s-3 5-5 5-5-1.5-5-5 3-5 5-5z"
+                fill="currentColor"
+                opacity="0.7"
+              />
+              <path d="M12 13v8M9 21h6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+            </svg>
             <span className="font-display italic font-bold text-2xl tracking-tight text-rose-deep">
               Roséa
-            </span>
-            <span className="px-2 py-0.5 rounded-full bg-rose-gold/15 text-rose-gold text-xs font-semibold uppercase tracking-wider">
-              Premium
             </span>
           </div>
           <div className="hidden md:flex items-center space-x-8">

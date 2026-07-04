@@ -111,7 +111,22 @@ export default function Hero() {
         <canvas ref={canvasRef} />
         <div className="hero-text" ref={heroTextRef}>
           <h1>Roséa</h1>
-          <p>An Interactive Luxury Film</p>
+          <svg
+            className="hero-flourish"
+            viewBox="0 0 60 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line x1="0" y1="12" x2="22" y2="12" stroke="currentColor" strokeWidth="1" />
+            <circle cx="30" cy="12" r="4" fill="currentColor" />
+            <path
+              d="M30 8c1.5-2 4-2 4 0.5S31.5 12 30 12s-4-1-4-3.5 2.5-2.5 4-0.5z"
+              fill="currentColor"
+              opacity="0.6"
+            />
+            <line x1="38" y1="12" x2="60" y2="12" stroke="currentColor" strokeWidth="1" />
+          </svg>
+          <p>Rose Flavored Milk</p>
         </div>
       </div>
     </section>

@@ -98,6 +98,15 @@ body {
   opacity: 0.75;
 }
 
+.hero-flourish {
+  width: 90px;
+  height: auto;
+  margin: 22px auto 0;
+  display: block;
+  color: var(--color-rose-deep);
+  opacity: 0.55;
+}
+
 /* ---- Loader ---- */
 
 #loader {

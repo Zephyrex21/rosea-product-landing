@@ -1,39 +1,43 @@
+import ScrollReveal from "./ScrollReveal";
+
 export default function Ingredients() {
   return (
     <section
-      className="relative z-10 py-24 bg-blush-lighter overflow-hidden transition-colors duration-300 scroll-mt-24"
+      className="petal-pattern relative z-10 py-24 overflow-hidden transition-colors duration-300 scroll-mt-24"
       id="ingredients"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <div
-            className="relative w-full self-start rounded-3xl overflow-hidden border border-blush shadow-xl shadow-rose-primary/10 group"
-            style={{ height: "420px", alignSelf: "start" }}
-          >
-            <img
-              src="/frames/ezgif-frame-120.jpg"
-              alt="Roséa bottle with fresh rose petals and a milk splash"
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-rose-ink/40 via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 flex items-center gap-3 bg-white/90 backdrop-blur-sm rounded-2xl px-5 py-4 shadow-lg">
-              <div className="w-10 h-10 rounded-full bg-rose-primary/10 flex items-center justify-center flex-shrink-0">
-                <span className="material-icons text-rose-primary text-xl">verified</span>
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-rose-ink leading-tight">
-                  100% Real Rose Extract
-                </p>
-                <p className="text-xs text-muted leading-tight">
-                  No shortcuts. No synthetic notes.
-                </p>
+          <ScrollReveal direction="left">
+            <div
+              className="relative w-full self-start rounded-3xl overflow-hidden border border-blush shadow-xl shadow-rose-primary/10 group"
+              style={{ height: "420px", alignSelf: "start" }}
+            >
+              <img
+                src="/frames/ezgif-frame-120.jpg"
+                alt="Roséa bottle with fresh rose petals and a milk splash"
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-rose-ink/40 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 flex items-center gap-3 bg-white/90 backdrop-blur-sm rounded-2xl px-5 py-4 shadow-lg">
+                <div className="w-10 h-10 rounded-full bg-rose-primary/10 flex items-center justify-center flex-shrink-0">
+                  <span className="material-icons text-rose-primary text-xl">verified</span>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-rose-ink leading-tight">
+                    100% Real Rose Extract
+                  </p>
+                  <p className="text-xs text-muted leading-tight">
+                    No shortcuts. No synthetic notes.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="space-y-8">
+          </ScrollReveal>
+          <ScrollReveal direction="right" className="space-y-8">
             <div>
               <h2 className="text-sm font-bold text-rose-primary tracking-widest uppercase mb-3">
-                Premium Ingredients
+                What's Inside
               </h2>
               <h3 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-rose-ink leading-tight">
                 Crafted with <span className="italic text-rose-primary">Nature's Best</span>
@@ -75,7 +79,7 @@ export default function Ingredients() {
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
