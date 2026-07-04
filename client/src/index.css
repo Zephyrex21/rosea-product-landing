@@ -153,3 +153,133 @@ body {
   background-color: var(--color-blush-lighter);
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238c4a56' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
+
+/* ---- Custom scrollbar, rose-themed ---- */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-blush-lighter);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-blush);
+  border-radius: 999px;
+  border: 2px solid var(--color-blush-lighter);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-rose-primary);
+}
+html {
+  scrollbar-color: var(--color-blush) var(--color-blush-lighter);
+  scrollbar-width: thin;
+}
+
+/* ---- Gradient text ---- */
+
+.text-gradient-rose {
+  background: linear-gradient(
+    100deg,
+    var(--color-rose-deep) 0%,
+    var(--color-rose-primary) 50%,
+    var(--color-rose-gold) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---- Shimmer sweep for primary buttons ---- */
+
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+}
+.shimmer-btn:hover::after {
+  left: 125%;
+}
+
+/* ---- Floating petals (Hero ambience) ---- */
+
+@keyframes petal-drift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(var(--drift-x, 30px), var(--drift-y, -120px)) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+.floating-petal {
+  position: absolute;
+  pointer-events: none;
+  animation: petal-drift ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* ---- Loader bloom ---- */
+
+@keyframes bloom-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+.loader-bloom {
+  animation: bloom-pulse 1.8s ease-in-out infinite;
+}
+
+/* ---- Scroll cue in hero ---- */
+
+@keyframes scroll-cue-bounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+}
+
+.scroll-cue {
+  animation: scroll-cue-bounce 2s ease-in-out infinite;
+}
+
+/* ---- Gallery image tilt on hover ---- */
+
+.gallery-tile {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
+}
+.gallery-tile:hover {
+  transform: translateY(-6px) scale(1.02);
+}

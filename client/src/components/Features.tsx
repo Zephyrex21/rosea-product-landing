@@ -39,7 +39,7 @@ export default function Features() {
           <h2 className="text-sm font-bold text-rose-primary tracking-widest uppercase mb-3">
             Why Choose Roséa
           </h2>
-          <h3 className="text-3xl md:text-4xl font-display font-bold text-rose-ink">
+          <h3 className="text-3xl md:text-4xl font-display font-bold text-gradient-rose">
             A Symphony of Taste and Elegance
           </h3>
           <svg

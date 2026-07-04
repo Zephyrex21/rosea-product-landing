@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useFramePreloader } from "../hooks/useFramePreloader";
 import Loader from "./Loader";
+import FloatingPetals from "./FloatingPetals";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,6 +37,7 @@ export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const heroTextRef = useRef<HTMLDivElement>(null);
+  const scrollCueRef = useRef<HTMLDivElement>(null);
   const frameState = useRef({ frame: 0 });
 
   const { images, progress, loaded } = useFramePreloader(FRAME_COUNT, frameSrc);
@@ -88,6 +90,16 @@ export default function Hero() {
           scrub: true,
         },
       });
+
+      gsap.to(scrollCueRef.current, {
+        opacity: 0,
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "8% top",
+          scrub: true,
+        },
+      });
     }, heroRef);
 
     const handleResize = () => {
@@ -109,6 +121,7 @@ export default function Hero() {
       <Loader progress={progress} visible={!loaded} />
       <div className="canvas-container">
         <canvas ref={canvasRef} />
+        <FloatingPetals />
         <div className="hero-text" ref={heroTextRef}>
           <h1>Roséa</h1>
           <svg
@@ -127,6 +140,14 @@ export default function Hero() {
             <line x1="38" y1="12" x2="60" y2="12" stroke="currentColor" strokeWidth="1" />
           </svg>
           <p>Rose Flavored Milk</p>
+        </div>
+        <div
+          ref={scrollCueRef}
+          className="scroll-cue absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-rose-deep/60"
+          style={{ zIndex: 5 }}
+        >
+          <span className="text-[10px] tracking-[0.3em] uppercase font-medium">Scroll</span>
+          <span className="material-icons text-xl">expand_more</span>
         </div>
       </div>
     </section>

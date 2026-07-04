@@ -33,7 +33,7 @@ export default function Refreshment() {
           </ScrollReveal>
           <ScrollReveal delay={0.3}>
             <div className="pt-8">
-              <button className="bg-white text-rose-primary hover:bg-blush-lighter px-8 py-4 rounded-full font-bold text-lg transition-all duration-200 shadow-lg shadow-black/10 inline-flex items-center gap-2 hover:scale-105">
+              <button className="shimmer-btn bg-white text-rose-primary hover:bg-blush-lighter px-8 py-4 rounded-full font-bold text-lg transition-all duration-200 shadow-lg shadow-black/10 inline-flex items-center gap-2 hover:scale-105">
                 <span>Grab Yours Now</span>
                 <span className="material-icons">arrow_forward</span>
               </button>
