@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Palette pulled from the actual Roséa bottle photography, not a generic rose-pink */
+  --color-rose-ink: #2b1a1e;        /* near-black warm text */
+  --color-rose-deep: #8c4a56;       /* deep mauve-rose, headings/logo */
+  --color-rose-primary: #c9727f;    /* mid rose, buttons/links/accents */
+  --color-rose-primary-dark: #a85662;
+  --color-blush: #e2a3ac;           /* bottle background blush */
+  --color-blush-light: #fbe9ec;     /* light surface tint */
+  --color-blush-lighter: #fdf3f4;
+  --color-rose-gold: #b8846f;       /* metallic cap accent */
+  --color-ivory: #fffbf9;           /* main background, warmer than pure white */
+  --color-surface: #fffaf8;
+  --color-muted: #8a6a6d;
+
+  --font-display: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ivory);
+  color: var(--color-rose-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+#root {
+  position: relative;
+  width: 100%;
+}
+
+/* ---- Hero scroll-canvas mechanics (ported from reference) ---- */
+
+.hero {
+  height: 300vh;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+}
+
+.canvas-container {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 1;
+  background: linear-gradient(180deg, #f7d9de 0%, #eab3bc 100%);
+}
+
+.canvas-container canvas {
+  max-width: 100vw;
+  max-height: 100vh;
+  object-fit: cover;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  text-align: center;
+  pointer-events: none;
+  width: 100%;
+  padding: 0 5%;
+}
+
+.hero-text h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 7.5rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-rose-deep);
+  text-shadow: 0 10px 30px rgba(140, 74, 86, 0.25);
+  letter-spacing: -0.02em;
+}
+
+.hero-text p {
+  font-family: var(--font-sans);
+  font-size: clamp(0.85rem, 1.5vw, 1.15rem);
+  margin-top: 14px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--color-rose-ink);
+  opacity: 0.75;
+}
+
+/* ---- Loader ---- */
+
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--color-ivory);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+#loader-text {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-rose-deep);
+}
+
+.loader-bar {
+  width: 220px;
+  height: 2px;
+  background: rgba(140, 74, 86, 0.15);
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.loader-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: var(--color-rose-deep);
+  transition: width 0.1s linear;
+}
+
+/* subtle SVG petal-mark pattern used behind a couple sections */
+.petal-pattern {
+  background-color: var(--color-blush-lighter);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238c4a56' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
