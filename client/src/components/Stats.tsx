@@ -9,7 +9,7 @@ const STATS = [
 
 export default function Stats() {
   return (
-    <section className="relative z-10 bg-rose-ink py-14">
+    <section className="relative z-10 bg-rose-ink py-14 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {STATS.map((stat, i) => (
@@ -26,6 +26,18 @@ export default function Stats() {
           ))}
         </div>
       </div>
+      <svg
+        className="absolute bottom-0 left-0 w-full text-blush-lighter"
+        viewBox="0 0 1440 40"
+        fill="none"
+        preserveAspectRatio="none"
+        style={{ height: "40px" }}
+      >
+        <path
+          d="M0 40C240 10 480 0 720 0C960 0 1200 10 1440 40H0Z"
+          fill="currentColor"
+        />
+      </svg>
     </section>
   );
 }

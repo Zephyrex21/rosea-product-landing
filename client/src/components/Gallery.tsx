@@ -1,12 +1,17 @@
 import ScrollReveal from "./ScrollReveal";
 
+// Frame numbers chosen by measuring pixel/edge variance across the sequence
+// to reliably pick frames where the bottle + splash are actually in frame
+// (avoids near-empty background frames like 001-040). All 7 are distinct
+// from each other and from the frame used in the Ingredients section (120).
 const GALLERY_FRAMES = [
-  { src: "/frames/ezgif-frame-030.jpg", span: "row-span-2" },
+  { src: "/frames/ezgif-frame-150.jpg", span: "row-span-2" },
   { src: "/frames/ezgif-frame-090.jpg", span: "" },
   { src: "/frames/ezgif-frame-160.jpg", span: "" },
   { src: "/frames/ezgif-frame-200.jpg", span: "row-span-2" },
   { src: "/frames/ezgif-frame-230.jpg", span: "" },
-  { src: "/frames/ezgif-frame-120.jpg", span: "" },
+  { src: "/frames/ezgif-frame-180.jpg", span: "" },
+  { src: "/frames/ezgif-frame-220.jpg", span: "" },
 ];
 
 export default function Gallery() {
@@ -17,8 +22,8 @@ export default function Gallery() {
           <h2 className="text-sm font-bold text-rose-primary tracking-widest uppercase mb-3">
             In the Frame
           </h2>
-          <h3 className="text-3xl md:text-4xl font-display font-bold text-rose-ink italic">
-            "Every angle, another reason to fall for it."
+          <h3 className="text-3xl md:text-4xl font-display font-bold italic text-rose-ink">
+            Every angle, another reason to fall for it.
           </h3>
         </ScrollReveal>
 
@@ -30,12 +35,17 @@ export default function Gallery() {
               distance={24}
               className={`${frame.span} rounded-2xl overflow-hidden`}
             >
-              <div className="gallery-tile w-full h-full rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:shadow-rose-primary/20 border border-blush/60">
+              <div className="gallery-tile relative w-full h-full rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:shadow-rose-primary/20 border border-blush/60 group">
                 <img
                   src={frame.src}
                   alt="Roséa bottle detail"
                   className="w-full h-full object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-rose-ink/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <span className="font-display italic text-white text-sm tracking-wide">
+                    Roséa
+                  </span>
+                </div>
               </div>
             </ScrollReveal>
           ))}
