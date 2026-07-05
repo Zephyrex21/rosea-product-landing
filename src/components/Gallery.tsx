@@ -39,7 +39,7 @@ export default function Gallery() {
                 <img
                   src={frame.src}
                   alt="Roséa bottle detail"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover animate-[ken-burns_16s_ease-in-out_infinite_alternate]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-rose-ink/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                   <span className="font-display italic text-white text-sm tracking-wide">

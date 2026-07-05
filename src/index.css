@@ -107,6 +107,32 @@ body {
   opacity: 0.55;
 }
 
+.hero-cursor-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  background: radial-gradient(
+    500px circle at var(--x, 50%) var(--y, 50%),
+    rgba(255, 255, 255, 0.22),
+    transparent 45%
+  );
+  transition: background 0.1s ease-out;
+}
+
+@keyframes logo-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+.logo-pulse {
+  animation: logo-pulse 3.5s ease-in-out infinite;
+}
+
 /* ---- Loader ---- */
 
 #loader {
@@ -273,6 +299,55 @@ html {
 
 .scroll-cue {
   animation: scroll-cue-bounce 2s ease-in-out infinite;
+}
+
+/* ---- Ambient drifting blobs ---- */
+
+@keyframes float-blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -20px) scale(1.08);
+  }
+  66% {
+    transform: translate(-20px, 15px) scale(0.95);
+  }
+}
+
+/* ---- Infinite marquee ticker ---- */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---- Ken Burns slow zoom for gallery photos ---- */
+
+@keyframes ken-burns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.12) translate(-1%, 1%);
+  }
+}
+
+/* ---- Animated underline sweep for footer-style text links ---- */
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.3s ease, color 0.2s ease;
+}
+.link-underline:hover {
+  background-size: 100% 1px;
 }
 
 /* ---- Gallery image tilt on hover ---- */

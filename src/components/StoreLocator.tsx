@@ -18,12 +18,12 @@ export default function StoreLocator() {
               partners.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <button className="flex-1 bg-rose-ink text-ivory px-6 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
-                <span className="material-icons">storefront</span>
+              <button className="group flex-1 bg-rose-ink text-ivory px-6 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200 shadow-sm hover:shadow-lg">
+                <span className="material-icons transition-transform duration-300 group-hover:scale-110">storefront</span>
                 <span>Store Locator</span>
               </button>
-              <button className="flex-1 bg-rose-primary/10 text-rose-primary border border-rose-primary/20 hover:bg-rose-primary/20 px-6 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition-colors">
-                <span className="material-icons">shopping_bag</span>
+              <button className="group flex-1 bg-rose-primary/10 text-rose-primary border border-rose-primary/20 hover:bg-rose-primary/20 hover:-translate-y-0.5 px-6 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all duration-200">
+                <span className="material-icons transition-transform duration-300 group-hover:scale-110">shopping_bag</span>
                 <span>Order Online</span>
               </button>
             </div>
@@ -42,8 +42,15 @@ export default function StoreLocator() {
               }}
             />
             <div className="relative z-10 flex flex-col items-center">
-              <div className="w-16 h-16 bg-rose-primary rounded-full flex items-center justify-center shadow-lg shadow-rose-primary/40 group-hover:scale-110 transition-transform duration-300">
-                <span className="material-icons text-white text-3xl">place</span>
+              <div className="relative">
+                <span className="absolute inset-0 rounded-full bg-rose-primary/40 animate-ping" />
+                <span
+                  className="absolute -inset-3 rounded-full bg-rose-primary/20 animate-ping"
+                  style={{ animationDelay: "0.5s" }}
+                />
+                <div className="relative w-16 h-16 bg-rose-primary rounded-full flex items-center justify-center shadow-lg shadow-rose-primary/40 group-hover:scale-110 transition-transform duration-300">
+                  <span className="material-icons text-white text-3xl">place</span>
+                </div>
               </div>
               <div className="mt-4 px-4 py-2 bg-white rounded-lg shadow-md border border-blush text-sm font-medium">
                 Search your pin code

@@ -45,7 +45,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-20">
           <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer">
             <svg
-              className="w-5 h-5 text-rose-primary"
+              className="logo-pulse w-5 h-5 text-rose-primary"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

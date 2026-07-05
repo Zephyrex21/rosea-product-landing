@@ -1,4 +1,5 @@
 import ScrollReveal from "./ScrollReveal";
+import FloatingPetals from "./FloatingPetals";
 
 export default function Refreshment() {
   return (
@@ -14,6 +15,7 @@ export default function Refreshment() {
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-rose-primary-dark/50 to-rose-primary/50 mix-blend-multiply" />
+      <FloatingPetals color="rgba(255,255,255,0.8)" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <div className="max-w-3xl mx-auto space-y-8">
           <ScrollReveal>
@@ -33,9 +35,11 @@ export default function Refreshment() {
           </ScrollReveal>
           <ScrollReveal delay={0.3}>
             <div className="pt-8">
-              <button className="shimmer-btn bg-white text-rose-primary hover:bg-blush-lighter px-8 py-4 rounded-full font-bold text-lg transition-all duration-200 shadow-lg shadow-black/10 inline-flex items-center gap-2 hover:scale-105">
+              <button className="shimmer-btn group bg-white text-rose-primary hover:bg-blush-lighter px-8 py-4 rounded-full font-bold text-lg transition-all duration-200 shadow-lg shadow-black/10 inline-flex items-center gap-2 hover:scale-105">
                 <span>Grab Yours Now</span>
-                <span className="material-icons">arrow_forward</span>
+                <span className="material-icons transition-transform duration-300 group-hover:translate-x-1">
+                  arrow_forward
+                </span>
               </button>
             </div>
           </ScrollReveal>

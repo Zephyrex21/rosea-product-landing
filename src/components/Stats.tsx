@@ -1,4 +1,5 @@
 import ScrollReveal from "./ScrollReveal";
+import CountUp from "./CountUp";
 
 const STATS = [
   { value: "100%", label: "Real Rose Extract" },
@@ -15,9 +16,10 @@ export default function Stats() {
           {STATS.map((stat, i) => (
             <ScrollReveal key={stat.label} delay={i * 0.1} distance={20}>
               <div className="text-center">
-                <p className="font-display text-4xl md:text-5xl font-bold text-gradient-rose mb-2">
-                  {stat.value}
-                </p>
+                <CountUp
+                  value={stat.value}
+                  className="font-display text-4xl md:text-5xl font-bold text-gradient-rose mb-2"
+                />
                 <p className="text-xs md:text-sm uppercase tracking-widest text-ivory/70">
                   {stat.label}
                 </p>

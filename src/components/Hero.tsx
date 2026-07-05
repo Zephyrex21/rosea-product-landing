@@ -36,11 +36,20 @@ function scaleImage(img: HTMLImageElement, ctx: CanvasRenderingContext2D) {
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const heroRef = useRef<HTMLElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
   const heroTextRef = useRef<HTMLDivElement>(null);
   const scrollCueRef = useRef<HTMLDivElement>(null);
   const frameState = useRef({ frame: 0 });
 
   const { images, progress, loaded } = useFramePreloader(FRAME_COUNT, frameSrc);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = glowRef.current;
+    if (!el) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    el.style.setProperty("--x", `${e.clientX - rect.left}px`);
+    el.style.setProperty("--y", `${e.clientY - rect.top}px`);
+  };
 
   const render = useCallback(() => {
     const canvas = canvasRef.current;
@@ -119,8 +128,9 @@ export default function Hero() {
   return (
     <section className="hero" ref={heroRef}>
       <Loader progress={progress} visible={!loaded} />
-      <div className="canvas-container">
+      <div className="canvas-container" onMouseMove={handleMouseMove}>
         <canvas ref={canvasRef} />
+        <div ref={glowRef} className="hero-cursor-glow" />
         <FloatingPetals />
         <div className="hero-text" ref={heroTextRef}>
           <h1>Roséa</h1>

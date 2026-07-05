@@ -10,18 +10,22 @@ const PETAL_CONFIGS = [
   { left: "50%", size: 8, duration: 9.5, delay: 5, driftX: 15, driftY: -160, opacity: 0.3 },
 ];
 
-function Petal({ size, opacity }: { size: number; opacity: number }) {
+function Petal({ size, opacity, color }: { size: number; opacity: number; color: string }) {
   return (
     <svg viewBox="0 0 24 24" width={size} height={size} style={{ opacity }}>
       <path
         d="M12 2c4 3 6 7 6 10a6 6 0 1 1-12 0c0-3 2-7 6-10z"
-        fill="var(--color-rose-primary)"
+        fill={color}
       />
     </svg>
   );
 }
 
-export default function FloatingPetals() {
+interface FloatingPetalsProps {
+  color?: string;
+}
+
+export default function FloatingPetals({ color = "var(--color-rose-primary)" }: FloatingPetalsProps) {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 5 }}>
       {PETAL_CONFIGS.map((p, i) => (
@@ -39,7 +43,7 @@ export default function FloatingPetals() {
             } as CSSProperties
           }
         >
-          <Petal size={p.size} opacity={p.opacity} />
+          <Petal size={p.size} opacity={p.opacity} color={color} />
         </div>
       ))}
     </div>

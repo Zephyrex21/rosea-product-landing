@@ -1,83 +1,68 @@
-# Roséa — An Interactive Luxury Film
+# Roséa — Rose Flavored Milk
 
-A MERN recreation of the Amul Kool scroll-driven experience, rebuilt for **Roséa**
-(Rose Flavored Milk). Same scroll-scrubbed canvas mechanic as the reference, your
-240-frame bottle rotation instead of the source clip, and copy/palette pulled
-from your actual product photography.
+A scroll-driven, animated brand site for Roséa, built with Vite + React +
+TypeScript + Tailwind CSS v4 + GSAP. Originally modeled on the Amul Kool
+scroll-canvas technique, then fully rebuilt around Roséa's own product
+photography, palette, and copy.
 
-```
-rosea-kool-project/
-├── client/   Vite + React + TypeScript + GSAP + Tailwind v4
-└── server/   Express + MongoDB (Mongoose) — minimal, health-check focused
-```
-
-## How the hero animation works
-
-- `public/frames/` holds your 240 `ezgif-frame-XXX.jpg` bottle rotation frames.
-- `src/hooks/useFramePreloader.ts` preloads all 240 images and reports progress
-  to the loader screen.
-- `src/components/Hero.tsx` pins a full-viewport `<canvas>` inside a 300vh
-  `.hero` section (`position: sticky`), and uses GSAP `ScrollTrigger` to scrub
-  a `{ frame: 0 → 239 }` value as you scroll, drawing the matching frame to
-  canvas on every update (cover-fit scaled, no letterboxing). The hero
-  headline fades out over the first 30% of that scroll.
-- Page scroll is locked until all 240 frames finish loading, so nobody scrolls
-  into a half-loaded sequence.
+This is a **frontend-only** project — no backend. The newsletter signup and
+store-locator pincode search are UI-only, same as the original reference.
 
 ## Getting started
 
-### 1. Client
-
 ```bash
-cd client
 npm install
 npm run dev
 ```
 
 Runs on `http://localhost:5173`.
 
-### 2. Server
-
 ```bash
-cd server
-npm install
-cp .env.example .env
-npm run dev
+npm run build      # production build to dist/
+npm run preview    # preview the production build locally
 ```
 
-Runs on `http://localhost:5000`. `MONGODB_URI` in `.env` is optional — the
-server boots fine without it; `GET /api/health` will just report
-`db.state: "disconnected"` until you point it at a local or Atlas MongoDB
-instance.
+## Structure
 
-```bash
-curl http://localhost:5000/api/health
-# { "status": "ok", "service": "rosea-kool-server", "db": { "attempted": true, "state": "disconnected" } }
+```
+├── public/frames/         240 bottle-rotation JPGs used by the hero canvas
+├── src/
+│   ├── components/        Navbar, Hero, Features, Stats, Ingredients,
+│   │                      Gallery, MarqueeTicker, Refreshment,
+│   │                      StoreLocator, Footer, plus small reusable
+│   │                      pieces: ScrollReveal, Parallax, TiltCard,
+│   │                      CountUp, FloatingPetals, Loader
+│   ├── hooks/
+│   │   └── useFramePreloader.ts   preloads the 240 frames, reports progress
+│   ├── index.css          theme tokens, animations, global styles
+│   ├── App.tsx
+│   └── main.tsx
 ```
 
-## What's kept the same as the Amul reference
+## How the hero animation works
 
-Section order, layout, the canvas scroll mechanic, GSAP scrub logic, and
-hover/transition behavior are all ported 1:1. What changed: copy, palette,
-brand name, and the frame sequence.
+- `.hero` is a 300vh wrapper; `.canvas-container` inside it is
+  `position: sticky` and pins a full-viewport `<canvas>` while you scroll
+  through that 300vh.
+- All 240 frames preload up front (with a loader + progress bar); page
+  scroll is locked until they're ready.
+- GSAP `ScrollTrigger` scrubs a `{ frame: 0 → 239 }` value against scroll
+  position, drawing the matching frame to canvas on every update
+  (cover-fit scaled, no letterboxing). The headline fades out over the
+  first 30% of that scroll, the scroll-down cue fades even faster.
 
-## What changed for Roséa
+## Design system
 
-| | Amul Kool | Roséa |
-|---|---|---|
-| Palette | Saturated magenta `#E91E63` + gold | Muted blush `#e2a3ac` + deep mauve-rose `#8c4a56`, sampled from your actual bottle photo |
-| Hero copy | "Amul Kool" / "The taste of India" | "Roséa" / "An Interactive Luxury Film" |
-| Feature cards | Generic energy-drink framing | Grounded in your real label claims (real rose extract, no preservatives, no artificial flavors) |
-| CTA band | "Beat the Heat, Keep Your Cool" | "Slow Down, Savor the Bloom" |
-| Dark mode | Toggle-based | Removed — fixed luxury-pink theme, per your call |
-| Frames | 210 JPGs | Your 240 JPGs |
+- Palette sampled directly from the actual product photography (not a
+  generic rose-pink): deep mauve-rose `#8c4a56`, blush `#e2a3ac`, rose-gold
+  `#b8846f`, warm ivory background.
+- Playfair Display (headings) + Inter (body).
+- All animation/motion lives in `index.css` (keyframes) and a handful of
+  small reusable components (`ScrollReveal` for one-time scroll-in
+  reveals, `Parallax` for continuous scroll-linked drift, `TiltCard` for
+  mouse-tracking 3D tilt, `CountUp` for animated numbers).
 
-## Notes / next steps
+## Deploying
 
-- The newsletter form and store-locator pincode search are UI-only (same as
-  the original reference) — no backend wiring, per your scope choice. If you
-  want either to actually save to MongoDB later, the server is already
-  structured (`src/routes/`, `src/config/db.js`) to drop in a `Lead` or
-  `StoreQuery` model and route in five minutes.
-- Deploy `client/` to Vercel the same way as the reference. Deploy `server/`
-  to Render with `MONGODB_URI` set as an environment variable there.
+Static site — deploy `dist/` (after `npm run build`) anywhere that serves
+static files: Vercel, Netlify, GitHub Pages, Render static sites, etc.

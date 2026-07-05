@@ -40,22 +40,22 @@ export default function Footer() {
             <h4 className="font-bold text-lg mb-4 font-display">Products</h4>
             <ul className="space-y-2 text-sm text-muted">
               <li>
-                <a className="hover:text-rose-primary transition-colors" href="#">
+                <a className="link-underline hover:text-rose-primary" href="#">
                   Roséa Classic Rose
                 </a>
               </li>
               <li>
-                <a className="hover:text-rose-primary transition-colors" href="#">
+                <a className="link-underline hover:text-rose-primary" href="#">
                   Roséa Saffron Bloom
                 </a>
               </li>
               <li>
-                <a className="hover:text-rose-primary transition-colors" href="#">
+                <a className="link-underline hover:text-rose-primary" href="#">
                   Roséa Cardamom Rose
                 </a>
               </li>
               <li>
-                <a className="hover:text-rose-primary transition-colors" href="#">
+                <a className="link-underline hover:text-rose-primary" href="#">
                   Roséa Café Rose
                 </a>
               </li>
@@ -65,22 +65,22 @@ export default function Footer() {
             <h4 className="font-bold text-lg mb-4 font-display">Support</h4>
             <ul className="space-y-2 text-sm text-muted">
               <li>
-                <a className="hover:text-rose-primary transition-colors" href="#">
+                <a className="link-underline hover:text-rose-primary" href="#">
                   Contact Us
                 </a>
               </li>
               <li>
-                <a className="hover:text-rose-primary transition-colors" href="#">
+                <a className="link-underline hover:text-rose-primary" href="#">
                   FAQs
                 </a>
               </li>
               <li>
-                <a className="hover:text-rose-primary transition-colors" href="#where-to-buy">
+                <a className="link-underline hover:text-rose-primary" href="#where-to-buy">
                   Store Locator
                 </a>
               </li>
               <li>
-                <a className="hover:text-rose-primary transition-colors" href="#">
+                <a className="link-underline hover:text-rose-primary" href="#">
                   Distributorship
                 </a>
               </li>
@@ -114,10 +114,10 @@ export default function Footer() {
             © {new Date().getFullYear()} Roséa. All rights reserved.
           </p>
           <div className="flex space-x-4 text-xs text-muted">
-            <a className="hover:text-rose-primary transition-colors" href="#">
+            <a className="link-underline hover:text-rose-primary" href="#">
               Privacy Policy
             </a>
-            <a className="hover:text-rose-primary transition-colors" href="#">
+            <a className="link-underline hover:text-rose-primary" href="#">
               Terms of Service
             </a>
           </div>
