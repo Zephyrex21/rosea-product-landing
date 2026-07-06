@@ -16,6 +16,8 @@ interface ScrollRevealProps {
   duration?: number;
   /** ScrollTrigger "start" value */
   start?: string;
+  /** Adds a subtle 3D perspective tilt as the element settles into place. */
+  tilt3d?: boolean;
 }
 
 export default function ScrollReveal({
@@ -26,6 +28,7 @@ export default function ScrollReveal({
   delay = 0,
   duration = 0.9,
   start = "top 85%",
+  tilt3d = false,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -37,6 +40,11 @@ export default function ScrollReveal({
     if (direction === "up") from.y = distance;
     if (direction === "left") from.x = -distance;
     if (direction === "right") from.x = distance;
+    if (tilt3d) {
+      from.rotationX = -18;
+      from.transformPerspective = 800;
+      from.transformOrigin = "top center";
+    }
 
     const to: gsap.TweenVars = {
       opacity: 1,
@@ -51,13 +59,14 @@ export default function ScrollReveal({
         toggleActions: "play none none none",
       },
     };
+    if (tilt3d) to.rotationX = 0;
 
     const ctx = gsap.context(() => {
       gsap.fromTo(el, from, to);
     });
 
     return () => ctx.revert();
-  }, [direction, distance, delay, duration, start]);
+  }, [direction, distance, delay, duration, start, tilt3d]);
 
   return (
     <div ref={ref} className={className}>

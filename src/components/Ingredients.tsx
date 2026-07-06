@@ -1,5 +1,6 @@
 import ScrollReveal from "./ScrollReveal";
 import Parallax from "./Parallax";
+import Icon from "./Icon";
 
 export default function Ingredients() {
   return (
@@ -11,8 +12,8 @@ export default function Ingredients() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <ScrollReveal direction="left">
             <div
-              className="relative w-full self-start rounded-3xl overflow-hidden border border-blush shadow-xl shadow-rose-primary/10 group"
-              style={{ height: "420px", alignSelf: "start" }}
+              className="relative w-full self-start h-[320px] md:h-[420px] rounded-3xl overflow-hidden border border-blush shadow-xl shadow-rose-primary/10 group"
+              style={{ alignSelf: "start" }}
             >
               <Parallax
                 amount={25}
@@ -22,13 +23,15 @@ export default function Ingredients() {
                 <img
                   src="/frames/ezgif-frame-120.jpg"
                   alt="Roséa bottle with fresh rose petals and a milk splash"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </Parallax>
               <div className="absolute inset-0 bg-gradient-to-t from-rose-ink/40 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 flex items-center gap-3 bg-white/90 backdrop-blur-sm rounded-2xl px-5 py-4 shadow-lg">
                 <div className="w-10 h-10 rounded-full bg-rose-primary/10 flex items-center justify-center flex-shrink-0">
-                  <span className="material-icons text-rose-primary text-xl">verified</span>
+                  <Icon name="verified" size={20} className="text-rose-primary" />
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-rose-ink leading-tight">
@@ -59,7 +62,7 @@ export default function Ingredients() {
             <div className="space-y-6">
               <div className="flex gap-4 group">
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-rose-primary/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                  <span className="material-icons text-rose-primary">eco</span>
+                  <Icon name="eco" size={22} className="text-rose-primary" />
                 </div>
                 <div>
                   <h4 className="text-xl font-semibold mb-1">
@@ -74,7 +77,7 @@ export default function Ingredients() {
               </div>
               <div className="flex gap-4 group">
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-rose-gold/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                  <span className="material-icons text-rose-gold">cruelty_free</span>
+                  <Icon name="cruelty_free" size={22} className="text-rose-gold" />
                 </div>
                 <div>
                   <h4 className="text-xl font-semibold mb-1">Farm-Fresh Milk</h4>

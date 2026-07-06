@@ -1,7 +1,14 @@
 import ScrollReveal from "./ScrollReveal";
 import TiltCard from "./TiltCard";
+import Icon from "./Icon";
 
-const FEATURES = [
+const FEATURES: {
+  icon: "local_florist" | "water_drop" | "spa";
+  title: string;
+  description: string;
+  accent: "primary" | "gold";
+  ribbon?: string;
+}[] = [
   {
     icon: "local_florist",
     title: "Real Rose Extract",
@@ -60,7 +67,7 @@ export default function Features() {
           style={{ perspective: "1200px" }}
         >
           {FEATURES.map((feature, i) => (
-            <ScrollReveal key={feature.title} delay={i * 0.15}>
+            <ScrollReveal key={feature.title} delay={i * 0.15} tilt3d>
               <TiltCard className="group relative rounded-2xl p-[1.5px] bg-gradient-to-br from-rose-primary/0 via-rose-gold/0 to-rose-primary/0 hover:from-rose-primary/60 hover:via-rose-gold/40 hover:to-rose-primary/60 transition-colors duration-500 h-full">
                 <div className="relative overflow-hidden bg-surface p-8 rounded-2xl border border-rose-primary/10 group-hover:border-transparent transition-all duration-300 shadow-sm group-hover:shadow-xl group-hover:shadow-rose-primary/15 text-center h-full">
                   {feature.ribbon && (
@@ -88,13 +95,13 @@ export default function Features() {
                         feature.accent === "gold" ? "bg-rose-gold/40" : "bg-rose-primary/30"
                       }`}
                     />
-                    <span
-                      className={`material-icons text-3xl relative ${
+                    <Icon
+                      name={feature.icon}
+                      size={28}
+                      className={`relative ${
                         feature.accent === "gold" ? "text-rose-gold" : "text-rose-primary"
                       }`}
-                    >
-                      {feature.icon}
-                    </span>
+                    />
                   </div>
                   <h4 className="text-xl font-bold mb-4 font-display relative">
                     {feature.title}

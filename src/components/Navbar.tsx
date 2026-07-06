@@ -10,6 +10,7 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState<string>("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,17 +34,38 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock background scroll while the mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  // Close the mobile menu automatically if the viewport grows past the md breakpoint
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) setMenuOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <nav
       className={`fixed top-0 z-[1000] w-full transition-all duration-300 ${
-        scrolled
+        scrolled || menuOpen
           ? "bg-ivory/95 backdrop-blur-md border-b border-rose-primary/10 shadow-sm"
           : "bg-white/20 backdrop-blur-sm border-b border-white/30"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+          <a
+            href="#"
+            className="flex-shrink-0 flex items-center gap-2 cursor-pointer"
+            onClick={() => setMenuOpen(false)}
+          >
             <svg
               className="logo-pulse w-5 h-5 text-rose-primary"
               viewBox="0 0 24 24"
@@ -60,7 +82,9 @@ export default function Navbar() {
             <span className="font-display italic font-bold text-2xl tracking-tight text-rose-deep">
               Roséa
             </span>
-          </div>
+          </a>
+
+          {/* Desktop nav */}
           <div className="hidden md:flex items-center space-x-8">
             {NAV_LINKS.map((link) => (
               <a
@@ -86,6 +110,60 @@ export default function Navbar() {
               Shop Now
             </button>
           </div>
+
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden relative w-10 h-10 flex items-center justify-center text-rose-ink"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            <span
+              className={`absolute block w-6 h-[1.5px] bg-current transition-all duration-300 ${
+                menuOpen ? "rotate-45" : "-translate-y-2"
+              }`}
+            />
+            <span
+              className={`absolute block w-6 h-[1.5px] bg-current transition-all duration-300 ${
+                menuOpen ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`absolute block w-6 h-[1.5px] bg-current transition-all duration-300 ${
+                menuOpen ? "-rotate-45" : "translate-y-2"
+              }`}
+            />
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu panel */}
+      <div
+        id="mobile-menu"
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="px-4 sm:px-6 pb-6 pt-2 flex flex-col gap-1 border-t border-rose-primary/10">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              onClick={() => setMenuOpen(false)}
+              className={`py-3 text-base font-medium border-b border-rose-primary/5 transition-colors ${
+                active === link.id ? "text-rose-primary" : "text-rose-ink"
+              }`}
+            >
+              {link.label}
+            </a>
+          ))}
+          <button
+            className="shimmer-btn mt-4 w-full bg-rose-primary text-white px-6 py-3 rounded-full font-medium shadow-md shadow-rose-primary/20"
+            onClick={() => setMenuOpen(false)}
+          >
+            Shop Now
+          </button>
         </div>
       </div>
     </nav>

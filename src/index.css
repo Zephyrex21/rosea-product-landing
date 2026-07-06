@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -13,7 +12,7 @@
   --color-rose-gold: #b8846f;       /* metallic cap accent */
   --color-ivory: #fffbf9;           /* main background, warmer than pure white */
   --color-surface: #fffaf8;
-  --color-muted: #8a6a6d;
+  --color-muted: #7d5b5e;
 
   --font-display: "Playfair Display", serif;
   --font-sans: "Inter", sans-serif;
@@ -21,6 +20,16 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* ---- Keyboard focus visibility (accessibility) ---- */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--color-rose-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 body {
@@ -269,19 +278,21 @@ html {
 
 /* ---- Loader bloom ---- */
 
-@keyframes bloom-pulse {
+@keyframes petal-bloom {
   0%, 100% {
-    transform: scale(1);
-    opacity: 0.85;
+    transform: scale(0.35) translateY(2px);
+    opacity: 0.35;
   }
   50% {
-    transform: scale(1.15);
+    transform: scale(1) translateY(0);
     opacity: 1;
   }
 }
 
-.loader-bloom {
-  animation: bloom-pulse 1.8s ease-in-out infinite;
+.bloom-petal {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: petal-bloom 1.8s ease-in-out infinite;
 }
 
 /* ---- Scroll cue in hero ---- */
@@ -299,6 +310,22 @@ html {
 
 .scroll-cue {
   animation: scroll-cue-bounce 2s ease-in-out infinite;
+}
+
+/* ---- Glassmorphic depth card (used on dark sections) ---- */
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-4px);
 }
 
 /* ---- Ambient drifting blobs ---- */

@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useFramePreloader } from "../hooks/useFramePreloader";
 import Loader from "./Loader";
 import FloatingPetals from "./FloatingPetals";
+import Icon from "./Icon";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -157,7 +158,7 @@ export default function Hero() {
           style={{ zIndex: 5 }}
         >
           <span className="text-[10px] tracking-[0.3em] uppercase font-medium">Scroll</span>
-          <span className="material-icons text-xl">expand_more</span>
+          <Icon name="expand_more" size={20} />
         </div>
       </div>
     </section>

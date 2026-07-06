@@ -1,6 +1,15 @@
+import { useState } from "react";
 import ScrollReveal from "./ScrollReveal";
+import Icon from "./Icon";
 
 export default function Footer() {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
     <footer className="relative z-10 bg-surface border-t border-rose-primary/10 pt-16 pb-8 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,20 +28,23 @@ export default function Footer() {
               <a
                 className="w-8 h-8 rounded-full bg-blush-light flex items-center justify-center text-rose-deep hover:bg-rose-primary hover:text-white transition-colors"
                 href="#"
+                aria-label="Roséa on Facebook"
               >
-                <span className="material-icons text-sm">facebook</span>
+                <Icon name="facebook" size={16} aria-hidden={true} />
               </a>
               <a
                 className="w-8 h-8 rounded-full bg-blush-light flex items-center justify-center text-rose-deep hover:bg-rose-primary hover:text-white transition-colors"
                 href="#"
+                aria-label="Roséa on Instagram"
               >
-                <span className="material-icons text-sm">photo_camera</span>
+                <Icon name="photo_camera" size={16} aria-hidden={true} />
               </a>
               <a
                 className="w-8 h-8 rounded-full bg-blush-light flex items-center justify-center text-rose-deep hover:bg-rose-primary hover:text-white transition-colors"
                 href="#"
+                aria-label="Roséa on YouTube"
               >
-                <span className="material-icons text-sm">play_arrow</span>
+                <Icon name="play_arrow" size={16} aria-hidden={true} />
               </a>
             </div>
           </div>
@@ -65,12 +77,12 @@ export default function Footer() {
             <h4 className="font-bold text-lg mb-4 font-display">Support</h4>
             <ul className="space-y-2 text-sm text-muted">
               <li>
-                <a className="link-underline hover:text-rose-primary" href="#">
+                <a className="link-underline hover:text-rose-primary" href="mailto:hello@rosea.example">
                   Contact Us
                 </a>
               </li>
               <li>
-                <a className="link-underline hover:text-rose-primary" href="#">
+                <a className="link-underline hover:text-rose-primary" href="#faq">
                   FAQs
                 </a>
               </li>
@@ -80,7 +92,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a className="link-underline hover:text-rose-primary" href="#">
+                <a className="link-underline hover:text-rose-primary" href="mailto:partners@rosea.example">
                   Distributorship
                 </a>
               </li>
@@ -91,22 +103,31 @@ export default function Footer() {
             <p className="text-sm text-muted mb-4">
               Subscribe to our newsletter for offers and updates.
             </p>
-            <form
-              className="flex flex-col space-y-2"
-              onSubmit={(e) => e.preventDefault()}
-            >
-              <input
-                className="bg-white border border-blush rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-primary focus:border-transparent"
-                placeholder="Enter your email"
-                type="email"
-              />
-              <button
-                className="bg-rose-ink text-ivory font-medium rounded-lg px-4 py-2 text-sm hover:opacity-90 transition-opacity"
-                type="submit"
-              >
-                Subscribe
-              </button>
-            </form>
+            {submitted ? (
+              <p className="text-sm text-rose-primary font-medium flex items-center gap-2">
+                <Icon name="check_circle" size={18} aria-hidden={true} />
+                Thanks! You're on the list.
+              </p>
+            ) : (
+              <form className="flex flex-col space-y-2" onSubmit={handleSubmit}>
+                <label htmlFor="newsletter-email" className="sr-only">
+                  Email address
+                </label>
+                <input
+                  id="newsletter-email"
+                  className="bg-white border border-blush rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-primary focus:border-transparent"
+                  placeholder="Enter your email"
+                  type="email"
+                  required
+                />
+                <button
+                  className="bg-rose-ink text-ivory font-medium rounded-lg px-4 py-2 text-sm hover:opacity-90 transition-opacity"
+                  type="submit"
+                >
+                  Subscribe
+                </button>
+              </form>
+            )}
           </div>
         </ScrollReveal>
         <div className="border-t border-rose-primary/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">

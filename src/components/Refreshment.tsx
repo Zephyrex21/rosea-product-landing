@@ -1,5 +1,6 @@
 import ScrollReveal from "./ScrollReveal";
 import FloatingPetals from "./FloatingPetals";
+import Icon from "./Icon";
 
 export default function Refreshment() {
   return (
@@ -19,7 +20,7 @@ export default function Refreshment() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <div className="max-w-3xl mx-auto space-y-8">
           <ScrollReveal>
-            <span className="material-icons text-5xl text-white/80">local_florist</span>
+            <Icon name="local_florist" size={44} className="text-white/80 mx-auto" />
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <h2 className="text-4xl md:text-5xl font-display font-bold leading-tight">
@@ -37,9 +38,10 @@ export default function Refreshment() {
             <div className="pt-8">
               <button className="shimmer-btn group bg-white text-rose-primary hover:bg-blush-lighter px-8 py-4 rounded-full font-bold text-lg transition-all duration-200 shadow-lg shadow-black/10 inline-flex items-center gap-2 hover:scale-105">
                 <span>Grab Yours Now</span>
-                <span className="material-icons transition-transform duration-300 group-hover:translate-x-1">
-                  arrow_forward
-                </span>
+                <Icon
+                  name="arrow_forward"
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
               </button>
             </div>
           </ScrollReveal>

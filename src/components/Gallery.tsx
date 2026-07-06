@@ -1,4 +1,5 @@
 import ScrollReveal from "./ScrollReveal";
+import TiltCard from "./TiltCard";
 
 // Frame numbers chosen by measuring pixel/edge variance across the sequence
 // to reliably pick frames where the bottle + splash are actually in frame
@@ -27,18 +28,24 @@ export default function Gallery() {
           </h3>
         </ScrollReveal>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[160px] md:auto-rows-[200px]">
+        <div
+          className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[160px] md:auto-rows-[200px]"
+          style={{ perspective: "1000px" }}
+        >
           {GALLERY_FRAMES.map((frame, i) => (
             <ScrollReveal
               key={frame.src}
               delay={(i % 3) * 0.1}
               distance={24}
+              tilt3d
               className={`${frame.span} rounded-2xl overflow-hidden`}
             >
-              <div className="gallery-tile relative w-full h-full rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:shadow-rose-primary/20 border border-blush/60 group">
+              <TiltCard max={6} className="gallery-tile relative w-full h-full rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:shadow-rose-primary/20 border border-blush/60 group">
                 <img
                   src={frame.src}
                   alt="Roséa bottle detail"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover animate-[ken-burns_16s_ease-in-out_infinite_alternate]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-rose-ink/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
@@ -46,7 +53,7 @@ export default function Gallery() {
                     Roséa
                   </span>
                 </div>
-              </div>
+              </TiltCard>
             </ScrollReveal>
           ))}
         </div>
