@@ -10,11 +10,9 @@ import Hero from "./components/Hero";
 const Features = lazy(() => import("./components/Features"));
 const Stats = lazy(() => import("./components/Stats"));
 const Ingredients = lazy(() => import("./components/Ingredients"));
-const NutritionFacts = lazy(() => import("./components/NutritionFacts"));
 const Gallery = lazy(() => import("./components/Gallery"));
 const MarqueeTicker = lazy(() => import("./components/MarqueeTicker"));
 const Refreshment = lazy(() => import("./components/Refreshment"));
-const FAQ = lazy(() => import("./components/FAQ"));
 const StoreLocator = lazy(() => import("./components/StoreLocator"));
 const Footer = lazy(() => import("./components/Footer"));
 
@@ -28,11 +26,9 @@ function App() {
           <Features />
           <Stats />
           <Ingredients />
-          <NutritionFacts />
           <Gallery />
           <MarqueeTicker />
           <Refreshment />
-          <FAQ />
           <StoreLocator />
           <Footer />
         </Suspense>

@@ -28,8 +28,8 @@ npm run preview    # preview the production build locally
 ├── public/frames/         240 bottle-rotation JPGs used by the hero canvas
 ├── src/
 │   ├── components/        Navbar (with mobile menu), Hero, Features, Stats,
-│   │                      Ingredients, NutritionFacts, Gallery,
-│   │                      MarqueeTicker, Refreshment, FAQ, StoreLocator,
+│   │                      Ingredients, Gallery,
+│   │                      MarqueeTicker, Refreshment, StoreLocator,
 │   │                      Footer, plus small reusable pieces: ScrollReveal,
 │   │                      Parallax, TiltCard, CountUp, FloatingPetals,
 │   │                      Loader

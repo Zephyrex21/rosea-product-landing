@@ -82,11 +82,6 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a className="link-underline hover:text-rose-primary" href="#faq">
-                  FAQs
-                </a>
-              </li>
-              <li>
                 <a className="link-underline hover:text-rose-primary" href="#where-to-buy">
                   Store Locator
                 </a>
